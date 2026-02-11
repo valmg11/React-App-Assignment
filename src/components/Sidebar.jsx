@@ -1,11 +1,12 @@
 import { useState, useCallback } from "react";
 
+
 /**
  * Renders an array of strings passed in that can be filtered and added to as an
  * unordered list.
  * @returns Component
  */
-export default function Sidebar() {
+export default function Sidebar(props) {
   let [newMenuItem, setNewMenuItem] = useState("")
   // TODO: 2 Using a state hook, maintain the current menu items as an array state.
   // let [menuItems, setMenuItems] = useState(initialMenuItems)
@@ -26,7 +27,14 @@ export default function Sidebar() {
   // its own item.
   return (
     <div>
-      <p>Placeholder</p>
+      <ul>
+        <li>{props.initialMenuItems[0]}</li>
+        <li>{props.initialMenuItems[1]}</li>
+        <li>{props.initialMenuItems[2]}</li>
+        <li>{props.initialMenuItems[3]}</li>
+        <li>{props.initialMenuItems[4]}</li>
+      </ul>
+      
       <input
         type="text"
         id="newMenuItemValue"
