@@ -7,18 +7,23 @@ import { useState, useCallback } from "react";
  * @returns Component
  */
 export default function Sidebar(props) {
-  let [newMenuItem, setNewMenuItem] = useState("")
+  let [newMenuItem, setNewMenuItem] = useState("");
   // TODO: 2 Using a state hook, maintain the current menu items as an array state.
+  
   // let [menuItems, setMenuItems] = useState(initialMenuItems)
+  let nextId = 4;
   let [menuItems, setMenuItems] = useState([props.initialMenuItems]);
 
-  let [filter, setFilter] = useState("")
+  let [filter, setFilter] = useState("");
   
   // Adds a single string passed in as parameter to the state element
   // "menuItems" that holds the set of current menu items.
 
   let addMenuItem = useCallback(() => {
     console.log("Added menu item")
+
+    console.log("new menu item:", {newMenuItem});
+    console.log("all menu", {menuItems});
   //   // TODO: 3. Add a new menu item to the correct variable associated with this class.
   //   // This involves adding a parameter and changing a class instance variable (props).
   //   setMenuItems([item, ...menuItems])
@@ -30,21 +35,13 @@ export default function Sidebar(props) {
 
   // TODO: 1 Render inside the outer div an unordered list of the menu items, with each string in the array
   // its own item.
-menuItems = props.initialMenuItems.map(newMenuItem => <li>{newMenuItem}</li>);
+menuItems = props.initialMenuItems.map(item => <li>{item}</li>);
 
-let nextId = 0;
+
   return (
     <div>
-      {/* <p>Test array:{menuItems}</p> */}
-      {/* <p>{newMenuItem}</p> */}
-
       <ul>{menuItems}</ul>
 
-      <ul>
-        {menuItems.map(newMenuItem => (
-          <li key={newMenuItem.id}>{addMenuItem.newMenuItem}</li>
-        ))}
-      </ul>
       {/* <ul>
         <li>{props.initialMenuItems[0]}</li>
         <li>{props.initialMenuItems[1]}</li>
@@ -67,15 +64,20 @@ let nextId = 0;
           /* TODO: 3 */
           // console.log(addMenuItem);
           addMenuItem();
-          console.log({newMenuItem});
           setMenuItems([
             ...menuItems,
-            { id: nextId++, newMenuItem: {newMenuItem}}
+            { id: nextId++, newMenuItem: newMenuItem}
           ]);
+
         }}
       >
         Add Item
       </button>
+      <ul>
+        {menuItems.map(menuItem => (
+          <li key={menuItem.id}>{menuItem.newMenuItem}</li>
+        ))}
+      </ul>
 
       <br />
 
