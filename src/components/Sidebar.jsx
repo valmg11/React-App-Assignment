@@ -22,8 +22,9 @@ export default function Sidebar(props) {
   let addMenuItem = useCallback(() => {
     console.log("Added menu item")
 
-    console.log("new menu item:", {newMenuItem});
-    console.log("all menu", {menuItems});
+    console.log("new menu item:", newMenuItem);
+    console.log("all menu", menuItems);
+    // alert(menuItems);
   //   // TODO: 3. Add a new menu item to the correct variable associated with this class.
   //   // This involves adding a parameter and changing a class instance variable (props).
   //   setMenuItems([item, ...menuItems])
@@ -35,12 +36,18 @@ export default function Sidebar(props) {
 
   // TODO: 1 Render inside the outer div an unordered list of the menu items, with each string in the array
   // its own item.
-menuItems = props.initialMenuItems.map(item => <li>{item}</li>);
+// props.initialMenuItems.map(item => <li>{item}</li>);
 
 
   return (
     <div>
-      <ul>{menuItems}</ul>
+      <ul>
+        {menuItems.map(menuItem => (
+          <li key={menuItem.id}>{menuItem.newMenuItem}</li>
+        ))}
+        {props.initialMenuItems.map(item => <li>{item}</li>)}
+      </ul>
+      {/* <ul>{props.initialMenuItems.map(item => <li>{item}</li>)}</ul> */}
 
       {/* <ul>
         <li>{props.initialMenuItems[0]}</li>
@@ -62,7 +69,6 @@ menuItems = props.initialMenuItems.map(item => <li>{item}</li>);
       <button
         onClick={() => {
           /* TODO: 3 */
-          // console.log(addMenuItem);
           addMenuItem();
           setMenuItems([
             ...menuItems,
@@ -73,11 +79,11 @@ menuItems = props.initialMenuItems.map(item => <li>{item}</li>);
       >
         Add Item
       </button>
-      <ul>
+      {/* <ul>
         {menuItems.map(menuItem => (
           <li key={menuItem.id}>{menuItem.newMenuItem}</li>
         ))}
-      </ul>
+      </ul> */}
 
       <br />
 
