@@ -15,6 +15,7 @@ export default function Sidebar(props) {
   let [menuItems, setMenuItems] = useState([props.initialMenuItems]);
 
   let [filter, setFilter] = useState("");
+  let regex = /{filter}/i;
   
   // Adds a single string passed in as parameter to the state element
   // "menuItems" that holds the set of current menu items.
@@ -22,9 +23,6 @@ export default function Sidebar(props) {
   let addMenuItem = useCallback(() => {
     console.log("Added menu item")
 
-    console.log("new menu item:", newMenuItem);
-    console.log("all menu", menuItems);
-    // alert(menuItems);
   //   // TODO: 3. Add a new menu item to the correct variable associated with this class.
   //   // This involves adding a parameter and changing a class instance variable (props).
   //   setMenuItems([item, ...menuItems])
@@ -36,7 +34,6 @@ export default function Sidebar(props) {
 
   // TODO: 1 Render inside the outer div an unordered list of the menu items, with each string in the array
   // its own item.
-// props.initialMenuItems.map(item => <li>{item}</li>);
 
 
   return (
@@ -47,15 +44,6 @@ export default function Sidebar(props) {
         ))}
         {props.initialMenuItems.map(item => <li>{item}</li>)}
       </ul>
-      {/* <ul>{props.initialMenuItems.map(item => <li>{item}</li>)}</ul> */}
-
-      {/* <ul>
-        <li>{props.initialMenuItems[0]}</li>
-        <li>{props.initialMenuItems[1]}</li>
-        <li>{props.initialMenuItems[2]}</li>
-        <li>{props.initialMenuItems[3]}</li>
-        <li>{props.initialMenuItems[4]}</li>
-      </ul> */}
       
       <input
         type="text"
@@ -79,11 +67,6 @@ export default function Sidebar(props) {
       >
         Add Item
       </button>
-      {/* <ul>
-        {menuItems.map(menuItem => (
-          <li key={menuItem.id}>{menuItem.newMenuItem}</li>
-        ))}
-      </ul> */}
 
       <br />
 
