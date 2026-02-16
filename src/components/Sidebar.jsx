@@ -15,7 +15,7 @@ export default function Sidebar(props) {
   let [menuItems, setMenuItems] = useState([props.initialMenuItems]);
 
   let [filter, setFilter] = useState("");
-  let regex = /{filter}/i;
+  // let regex = /{filter}/i;
   
   // Adds a single string passed in as parameter to the state element
   // "menuItems" that holds the set of current menu items.
